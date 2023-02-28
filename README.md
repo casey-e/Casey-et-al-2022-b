@@ -1,5 +1,7 @@
 # Dopaminergic innervation at the central nucleus of the amygdala reveals distinct topographically segregated regions
-Raw data and codes for creating graphs and statistical analysis our paper Casey, E., Avale, M.E., Kravitz, A. et al. Dopaminergic innervation at the central nucleus of the amygdala reveals distinct topographically segregated regions. Brain Struct Funct 228, 663–675 (2023). https://doi.org/10.1007/s00429-023-02614-1 
+Raw data and codes for creating graphs and statistical analysis our paper Casey, E., Avale, M.E., Kravitz, A. et al. Dopaminergic innervation at the central nucleus of the amygdala reveals distinct topographically segregated regions. Brain Struct Funct 228, 663–675 (2023). https://doi.org/10.1007/s00429-023-02614-1 . 
+ 
+ 
 Statistical analyses corresponding to **Fig. 4B** and **4D** are in the file "Casey et all, 2022_Fig4B,C_Statistics.R". The rest of the analyses, as well as graphs and data processing, are in the file "Casey et all, 2022_Statistics&graphs.py".
 
 ## Fig. 1 
