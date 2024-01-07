@@ -2,10 +2,10 @@
 Raw data and codes for creating graphs and statistical analysis our paper Casey, E., Avale, M.E., Kravitz, A. et al. Dopaminergic innervation at the central nucleus of the amygdala reveals distinct topographically segregated regions. Brain Struct Funct 228, 663–675 (2023). https://doi.org/10.1007/s00429-023-02614-1 . 
  
  
-Statistical analyses corresponding to **Fig. 4B** and **4D** are in the file "Casey et all, 2022_Fig4B,C_Statistics.R". The rest of the analyses, as well as graphs and data processing, are in the file "Casey et all, 2022_Statistics&graphs.py".
+Statistical analyses corresponding to **Fig. 4B** and **4D** are in [Casey et all, 2022_Fig4B,C_Statistics.R](https://github.com/casey-e/Casey-et-al-2022-b/blob/main/Casey%20et%20all%2C%202022_Fig4B%2CC_Statistics.R). The rest of the analyses, as well as graphs and data processing, are in [Casey et all, 2022_Statistics&graphs.py](https://github.com/casey-e/Casey-et-al-2022-b/blob/main/Casey%20et%20all%2C%202022_Statistics%26graphs.py).
 
 
-If necessary, use the Requirements file to recreate the environment used to run the Python codes of "Casey et all, 2022_Statistics&graphs.py".
+If necessary, use [Requirements.txt](https://github.com/casey-e/Casey-et-al-2022-b/blob/main/Requirements.txt) to recreate the environment used to run the Python codes of [Casey et all, 2022_Statistics&graphs.py](https://github.com/casey-e/Casey-et-al-2022-b/blob/main/Casey%20et%20all%2C%202022_Statistics%26graphs.py).
 
 
 ## Fig. 1 
