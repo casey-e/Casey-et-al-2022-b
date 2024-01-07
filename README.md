@@ -4,6 +4,10 @@ Raw data and codes for creating graphs and statistical analysis our paper Casey,
  
 Statistical analyses corresponding to **Fig. 4B** and **4D** are in the file "Casey et all, 2022_Fig4B,C_Statistics.R". The rest of the analyses, as well as graphs and data processing, are in the file "Casey et all, 2022_Statistics&graphs.py".
 
+
+If necessary, use the Requirements file to recreate the environment used to run the Python codes of "Casey et all, 2022_Statistics&graphs.py".
+
+
 ## Fig. 1 
 ![image](https://user-images.githubusercontent.com/92745842/221949128-ecf04be2-8d75-4d0f-94e6-b2fef53de783.png)
  

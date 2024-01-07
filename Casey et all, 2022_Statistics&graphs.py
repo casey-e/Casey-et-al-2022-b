@@ -6,19 +6,13 @@ Created on Thu Aug  5 11:51:43 2021
 """
 import numpy as np
 import pandas as pd
-import matplotlib as mpl
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-from glob import glob
 import pingouin as pg
-import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from scipy.ndimage import label, generate_binary_structure, find_objects
-import matplotlib.image as mpimg
 from PIL import Image
 from sklearn.decomposition import PCA
-from bs4 import BeautifulSoup
 import requests
 from io import BytesIO
 
@@ -36,10 +30,30 @@ def draw_bs_pairs(x, y, size=1):
         bs_diff_reps[i]=np.mean(bs_x-bs_y)       
     return bs_diff_reps
 
-def listFD(url, ext=''):
-    page = requests.get(url).text
-    soup = BeautifulSoup(page, 'html.parser')
-    return [node.get('href') for node in soup.find_all('a') if node.get('href').endswith(ext)]
+def get_filenames(subfolder_path, ext='', repository_url='https://api.github.com/repos/casey-e/Casey-et-al-2022-b/contents'):
+    """Make a list of filenames in a repository's subfolder"""
+    filenames_list=[] #List to store filepaths
+    # Define GitHub API endpoint
+    url = f'{repository_url}/{subfolder_path}'
+    # Make a request to the GitHub API without authentication
+    response = requests.get(url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse the JSON response
+        files = response.json()
+
+        # Download each file in the subfolder
+        for file in files:
+            file_name = file["name"]
+            if file_name.endswith(ext):
+                filenames_list.append(file_name)
+    
+        return filenames_list
+
+    else:
+        print(f"Failed to retrieve files. Status code: {response.status_code}")
+        print(response.text)
 
 #%%
 
@@ -122,10 +136,10 @@ plt.show()
 ### Fig. 1C
 #Process dataframe and plot scaled TH intensity across fronto-ventral axis of the frontal CeC
 #Loop over the dataframes of each individual , process dataframe and normalize the TH values. Concatenate in a single dataframe: f1c_df
-url = 'https://github.com/casey-e/Casey-et-al-b-2022/tree/main/Fig1/'
+subfolder_path = 'Fig1'
 ext = 'csv'
 df_list=[]
-for file in [file[-16:] for file in listFD(url, ext) if 'Fig1C.csv' in file]:
+for file in [file for file in get_filenames(subfolder_path, ext) if 'Fig1C.csv' in file]:
     f1c_df=pd.read_csv(directory+file, encoding='cp1252')
     f1c_df.rename(columns={'Distance_(µm)':'Distance'}, inplace=True)
     #Normalize TH values
@@ -326,11 +340,11 @@ AP_crops_dict={'0.94':crops_dict_094,'1.06':crops_dict_106, '1.34':crops_dict_13
 # In addition, for each image of cFos immunostaining, it slices the sampling areas, count cFos positive nuclei using
 # a treshold of value (intensity of fluorescence) and size, and store the counts in a list of dataframes, where each
 # dataframe corresponds to an image.
-url = 'https://github.com/casey-e/Casey-et-al-b-2022/tree/main/Fig5/'
+subfolder_path = 'Fig5'
 ext = 'tif'
 df_list=[] #List to store dataframes with the number of cFos per sampling area, for each image of cFos immunostaining
 # for file in glob('*.tif'):
-for file in [file[43:] for file in listFD(url, ext)]:
+for file in get_filenames(subfolder_path, ext):
     #Define the variable treatment depending on the name of the image
     for i,j in zip(['C','S','Q','H'],treatment_list):
         if i in file:
